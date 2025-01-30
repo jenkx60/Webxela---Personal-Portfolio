@@ -1,22 +1,42 @@
 import React from 'react';
 // import { motion } from 'framer-motion';
 import * as motion from 'motion/react-client';
+import html from '../public/html-icon.svg';
+import css from '../public/css-icon.svg';
+import javascript from '../public/javascript-programming-language-icon.svg';
+import react from '../public/react-js-icon.svg';
+import next from '../public/nextjs-icon.svg';
+import bootstrap from '../public/bootstrap-5-logo-icon.svg';
+import tailwind from '../public/tailwind-css-icon.svg';
+import Image from 'next/image';
 
-const skills = ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "Git"];
+const skills = [
+  { stack: 'HTML', image: html },
+  { stack: 'CSS', image: css },
+  { stack: 'JavaScript', image: javascript },
+  { stack: 'React', image: react },
+  { stack: 'Next.js', image: next },
+  { stack: 'BootStrap', image: bootstrap }, 
+  { stack: 'Tailwind', image: tailwind },
+];
 
 const Skills = () => {
   return (
     <div>
       <section className='py-20 bg-gray-400 text-center'>
         <h2 className='text-3xl font-bold'>Skills</h2>
-        <div className='flex flex-wrap justify-center mt-6 space-x-4'>
+        <div className='flex flex-wrap justify-center mt-6 space-x-6 rounded-full'>
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              className="bg-white shadow-md px-6 py-3 rounded-lg m-2 text-black font-bold cursor-pointer"
-              whileHover={{ scale: 1.1 }}
+              className="bg-white shadow-2xl p-5 rounded-xl text-black font-bold cursor-pointer"
+              whileHover={{ scale: 1.5 }}
             >
-              {skill}
+              <div className='flex gap-3'>
+                <Image src={skill.image} alt={skill.stack} width={30} height={10} className='grid place-items-center'/>
+                <h2>{skill.stack}</h2>
+              </div>
+              
             </motion.div>
           ))}
         </div>

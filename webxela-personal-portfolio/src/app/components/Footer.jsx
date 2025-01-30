@@ -11,7 +11,7 @@ const Footer = () => {
 
             {/* Left Section - Branding */}
             <div className='text-center md:text-left'>
-              <h2 className='text-2xl font-bold'>Jenkins Uwagbai</h2>
+              <h2 className='text-2xl font-bold'>Jenkins <span className='text-blue-300'>Uwagbai</span></h2>
               <p className='text-sm'>Frontend Developer | Tech Enthusiast</p>
             </div>
 

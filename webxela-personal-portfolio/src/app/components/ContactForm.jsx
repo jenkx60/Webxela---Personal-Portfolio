@@ -30,11 +30,33 @@ const ContactForm = () => {
   return (
     <div>
       <section className='py-20 bg-gray-100 text-center'>
-          <h2 className='text-3xl font-bold'>Contact Me</h2>
-          <form onSubmit={handleSubmit} className='mt-6 space-y-4'>
-            <input name='name' placeholder='Your Name' onChange={handleChange} className='w-80 p-2 border rounded' required />
-            <input type="email" name='email' placeholder='example@email.com' onChange={handleChange} className='w-80 p-2 border rounded' required />
-            <textarea name="message" placeholder='Your Message' onChange={handleChange} className='w-80 p-2 border rounded h-32' required></textarea>
+        <h2 className='text-3xl font-bold text-black'>Contact Me</h2>
+          <form onSubmit={handleSubmit} className='mt-6 space-y-4 flex flex-col justify-center place-items-center w-full'>
+            <input 
+              name='name' 
+              placeholder='Your Name' 
+              onChange={handleChange} 
+              className='w-80 p-2 border rounded text-black placeholder:text-sm' 
+              required 
+            />
+
+            <input 
+              type="email" 
+              name='email' 
+              placeholder='example@email.com' 
+              onChange={handleChange} 
+              className='w-80 p-2 border rounded text-black placeholder:text-sm' 
+              required 
+            />
+
+            <textarea 
+              name="message" 
+              placeholder='Your Message' 
+              onChange={handleChange} 
+              className='w-80 p-2 border rounded h-32 text-black placeholder:text-sm' 
+              required
+            ></textarea>
+
             <button type='submit' className='bg-blue-500 text-white px-6 py-2 rounded'>Send Message</button>
           </form>
       </section>
