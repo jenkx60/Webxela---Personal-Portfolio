@@ -73,7 +73,7 @@ const About = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
                         >
-                            <h1 className='font-intert font-extrabold text-4xl mb-5'>Hi, Im Jenkins Uwagbai</h1>
+                            <h1 className='font-intert font-extrabold text-4xl mb-5'>Hi, I&apos;m Jenkins Uwagbai</h1>
                             <h2 className='font-intert font-bold text-2xl text-blue-500 mb-5'>Frontend Developer</h2>
                             <p className='font-intert font-light text-lg mb-4 leading-6'>I specialize in buildng and managing websites and web applications, creating seamless and user-friendly experiences that drive product success. I also enjoy sharing my web development knowledge to help others in the dev community.</p>
 
@@ -121,7 +121,7 @@ const About = () => {
             <div className='container my-10 flex flex-col md:flex-row items-center'>
                 <div className='w-full md:w-1/2 px-4 md:px-10'>
                     <div className='flex flex-col gap-4'>
-                        <h1 className='font-intert font-bold text-2xl md:text-3xl'><strong>Bringing Ideas to Life with Mordern Frontend Development</strong></h1>
+                        <h1 className='font-intert font-bold text-2xl md:text-3xl'><strong>Bringing Ideas to Life with Modern Frontend Development</strong></h1>
                         <p className='font-intert font-light text-lg md:text-xl leading-6'>I'm a skilled Frontend Web Developer specializing in building responsive, user-friendly websites and web applications. With expertise in HTML, CSS, JavaScript, BootStrap, TailwindCSS, Git, GitHub and modern frameworks like React and NextJs.</p> 
                         <p className='font-intert font-light text-lg md:text-xl leading-6'>I craft seamless interfaces that enhance user experience and contribute to product success. My focus is on clean code, performance optimization, and delivering solutions that meet both user and business needs.</p>  
                     </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import * as motion from 'motion/react-client';
 
@@ -11,16 +11,21 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const ContactForm = () => {
   const [ formData, setFormData ] = useState({ name: "", email: "", message: "" });
 
+  const inputRef = useRef(null);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    inputRef.current.reset();
+
     const { data, error } = await supabase.from("contacts").insert([formData]);
     if (error) 
       console.log(error);
     else alert("Message sent successfully");
+
   };
 
   return (
@@ -51,7 +56,7 @@ const ContactForm = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-          <form onSubmit={handleSubmit} className='container mt-6 space-y-6 flex flex-col justify-center items-center w-full md:w-1/2 px-4'>
+          <form onSubmit={handleSubmit} ref={inputRef} className='container mt-6 space-y-6 flex flex-col justify-center items-center w-full md:w-1/2 px-4'>
               <input 
                 name='name' 
                 placeholder='Your Name' 
