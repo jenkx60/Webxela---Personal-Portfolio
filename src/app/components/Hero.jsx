@@ -48,16 +48,16 @@ const HomePage = () => {
   return (
     <div className='py-20 bg-gradient-to-b from-blue-500 to-purple-500'>
       {/* <Navbar /> */}
-      <div className='flex gap-14 my-20'>
+      <div className='flex flex-col md:flex-row gap-14 my-20 items-center'>
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className='container w-1/2 flex flex-col justify-center place-items-start text-left gap-5'
+          className='container w-full md:1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left gap-5'
         >
-          <h2 className='text-4xl  font-intert text-left'>Hello, I&apos;m</h2>
+          <h2 className='text-4xl font-intert'>Hello, I&apos;m</h2>
 
-          <h1 className='text-9xl text-left font-extrabold font-intert'>Jenkins <br /> Uwagbai</h1>
+          <h1 className='text-6xl md:text-9xl font-extrabold font-intert'>Jenkins <br /> Uwagbai</h1>
 
           <h2 className='text-2xl'>Frontend Developer | Tech Enthusiast</h2>
 
@@ -75,7 +75,7 @@ const HomePage = () => {
         {/* <div className='container w-1/2 bg-primary flex flex-col justify-center place-items-start text-left gap-5'>
           
         </div> */}
-        <div className='w-1/2'>
+        <div className='w-full md:w-1/2 flex justify-center'>
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}

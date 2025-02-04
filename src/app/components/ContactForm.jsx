@@ -13,16 +13,11 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // console.log(formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const jsonData = JSON.stringify(formData);
-    console.log(formData, 'erroooooo');
     const { data, error } = await supabase.from("contacts").insert([formData]);
-    // console.log(data);
-    // console.log(error);
     if (error) 
       console.log(error);
     else alert("Message sent successfully");
@@ -37,14 +32,14 @@ const ContactForm = () => {
           viewport={{ once: true }}
           transition={{ duration: 1.5 }}
         >
-          <div className='relative flex justify-center mt-20 mb-20'>
+          <div className='relative flex flex-col items-center mt-20 mb-20'>
               <div className='absolute text-center mt-5'>
                 <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>CONTACT ME</h1>
-                <hr className='flex justify-center border-blue-500 border-2 w-58 place-items-center'/>
+                <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
               </div>
 
               <div>
-                <h1 className='text-9xl font-intert font-extrabold opacity-10'>CONTACT ME</h1>
+                <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>CONTACT ME</h1>
               </div>
           </div>
         </motion.div>
@@ -56,7 +51,7 @@ const ContactForm = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-          <form onSubmit={handleSubmit} className=' container mt-6 space-y-6 flex flex-col justify-center place-items-center align-middle w-1/2'>
+          <form onSubmit={handleSubmit} className='container mt-6 space-y-6 flex flex-col justify-center items-center w-full md:w-1/2 px-4'>
               <input 
                 name='name' 
                 placeholder='Your Name' 

@@ -32,18 +32,19 @@ const SkillWall = () => {
     }
 
   return (
-    <div className='flex justify-center gap-5 pb-20'>
+    <div className='flex flex-wrap justify-center gap-5 pb-20'>
         {skillImg.map((item, index) => (
             <motion.div
                 whileHover={{ scale: 1.5 }}
                 whileTap={{ scales: 0.9 }}
                 style={box}
+                className='w-20 h-20 md:w-24 md:h-24'
             >
                 <div key={index} className='bg-transparent rounded-full shadow-md p-4 flex justify-center items-center'>
                     <Image
                         src={item.imgUrl}
                         alt={item.altText}
-                        className='w-12 h-12 object-contain' 
+                        className='w-12 h-12 md:w-16 md:h-16 object-contain' 
                     />
                 </div>
             </motion.div>

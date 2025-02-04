@@ -27,7 +27,7 @@ import SkillWall from '../components/SkillWall';
 
 const About = () => {
   return (
-    <div className='my-20'>
+    <div className='my-20 px-4 md:px-20'>
         <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,11 +36,11 @@ const About = () => {
         >
             <div className='relative flex justify-center mt-20'>
                 <div className='absolute text-center mt-5'>
-                    <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>ABOUT ME</h1>
-                    <hr className='flex justify-center border-blue-500 border-2 w-58 place-items-center'/>
+                    <h1 className='text-2xl md:text-4xl font-intert font-extrabold text-blue-500 pb-4'>ABOUT ME</h1>
+                    <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
                 </div>
                 <div>
-                    <h1 className='text-9xl font-intert font-extrabold opacity-10'>ABOUT ME</h1>
+                    <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>ABOUT ME</h1>
                 </div>
             </div>
         </motion.div>
@@ -51,8 +51,8 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.5, delay: 0.8 }}
         >
-            <div className='container my-10 flex'>
-                <div className='container'>
+            <div className='container my-10 flex flex-col md:flex-row items-center'>
+                <div className='w-full md:w-1/2 flex justify-center mb-20 md:mb-0'>
                     <motion.div
                         initial={{ opacity: 0, y: 0 }}
                         animate={{ opacity: 1, y: 100 }}
@@ -62,11 +62,12 @@ const About = () => {
                             src={undraw}
                             alt="Web Developer"
                             width={500}
+                            className='w-3/4 md-w-full'
                         />
                     </motion.div>
                     
                 </div>
-                <div className='container'>
+                <div className='w-full md:w-1/2 mt-10 md:mt-0 px-4 md:px-10'>
                     <motion.div
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -108,7 +109,7 @@ const About = () => {
             viewport={{ once: true}}
             transition={{ duration: 1, delay: 0.5 }}
         >
-            <div className='relative flex justify-center mt-32'>
+            <div className='relative flex items-center mt-32'>
                 <div className='absolute text-center mt-5'>
                     <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>MY SKILLS</h1>
                     <hr className='flex justify-center border-blue-500 border-2 w-58 place-items-center'/>
@@ -120,8 +121,8 @@ const About = () => {
         </motion.div>
         
         <motion.div>
-            <div className='container my-10 flex'>
-                <div className='container'>
+            <div className='container my-10 flex flex-col md:flex-row items-center'>
+                <div className='w-full md:w-1/2 px-4 md:px-10'>
                     <div className='flex flex-col gap-4'>
                         <h1 className='font-intert font-bold text-2xl'><strong>Bringing Ideas to Life with Mordern Frontend Development</strong></h1>
                         <p className='font-intert font-light text-lg leading-6'>I'm a skilled Frontend Web Developer specializing in building responsive, user-friendly websites and web applications. With expertise in HTML, CSS, JavaScript, BootStrap, TailwindCSS, Git, GitHub and modern frameworks like React and NextJs.</p> 

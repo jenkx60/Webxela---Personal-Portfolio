@@ -20,22 +20,22 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className='container my-20'>
-      <section className=''>
+    <div className='container my-20 px-4 md:px-20'>
+      <section>
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.5 }}
         >
-          <div className='relative flex justify-center mt-20 mb-20'>
+          <div className='relative flex flex-col items-center mt-20 mb-20'>
             <div className='absolute text-center mt-5'>
               <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>PROJECT</h1>
-              <hr className='flex justify-center border-blue-500 border-2 w-58 place-items-center'/>
+              <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
             </div>
 
             <div>
-              <h1 className='text-9xl font-intert font-extrabold opacity-10'>PROJECT</h1>
+              <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>PROJECT</h1>
             </div>
           </div>
         </motion.div>
@@ -52,7 +52,7 @@ const Projects = () => {
                 <Image src={project.image} alt={project.title} width={300} height={300} className='rounded-lg pb-8' />
                 {/* <div className='flex justify-between items-center mb-3'> */}
                   <h3 className='text-xl font-semibold text-black mb-2'>{project.title}</h3>
-                  <p className='text-blue-500 font-semibold pb-3 w-1/2 cursor-pointer'>{project.skill}</p>
+                  <p className='text-blue-500 font-semibold pb-3'>{project.skill.join('')}</p>
                 {/* </div> */}
                 <p className='text-gray-600'>{project.description}</p>
                 <button className='bg-blue-500 text-white py-2 px-4 rounded-lg mt-4'>
