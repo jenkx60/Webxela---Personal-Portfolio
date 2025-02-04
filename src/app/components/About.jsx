@@ -95,7 +95,6 @@ const About = () => {
                                 <a download href="../public/Jenkins_Uwagbai_CV.pdf">Download CV</a>
                             </motion.button>
                     </motion.div>
-                    
                 </div>
             </div>
         </motion.div>
