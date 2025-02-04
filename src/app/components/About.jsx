@@ -109,13 +109,13 @@ const About = () => {
             viewport={{ once: true}}
             transition={{ duration: 1, delay: 0.5 }}
         >
-            <div className='relative flex items-center mt-32'>
+            <div className='relative flex flex-col items-center mt-32'>
                 <div className='absolute text-center mt-5'>
-                    <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>MY SKILLS</h1>
-                    <hr className='flex justify-center border-blue-500 border-2 w-58 place-items-center'/>
+                    <h1 className='text-2xl md:text-4xl font-intert font-extrabold text-blue-500 pb-4'>SKILLS</h1>
+                    <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
                 </div>
                 <div>
-                    <h1 className='text-9xl font-intert font-extrabold opacity-10'>MY SKILLS</h1>
+                    <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>SKILLS</h1>
                 </div>
             </div>
         </motion.div>
@@ -124,9 +124,9 @@ const About = () => {
             <div className='container my-10 flex flex-col md:flex-row items-center'>
                 <div className='w-full md:w-1/2 px-4 md:px-10'>
                     <div className='flex flex-col gap-4'>
-                        <h1 className='font-intert font-bold text-2xl'><strong>Bringing Ideas to Life with Mordern Frontend Development</strong></h1>
-                        <p className='font-intert font-light text-lg leading-6'>I'm a skilled Frontend Web Developer specializing in building responsive, user-friendly websites and web applications. With expertise in HTML, CSS, JavaScript, BootStrap, TailwindCSS, Git, GitHub and modern frameworks like React and NextJs.</p> 
-                        <p className='font-intert font-light text-lg leading-6'>I craft seamless interfaces that enhance user experience and contribute to product success. My focus is on clean code, performance optimization, and delivering solutions that meet both user and business needs.</p>  
+                        <h1 className='font-intert font-bold text-2xl md:text-3xl'><strong>Bringing Ideas to Life with Mordern Frontend Development</strong></h1>
+                        <p className='font-intert font-light text-lg md:text-xl leading-6'>I'm a skilled Frontend Web Developer specializing in building responsive, user-friendly websites and web applications. With expertise in HTML, CSS, JavaScript, BootStrap, TailwindCSS, Git, GitHub and modern frameworks like React and NextJs.</p> 
+                        <p className='font-intert font-light text-lg md:text-xl leading-6'>I craft seamless interfaces that enhance user experience and contribute to product success. My focus is on clean code, performance optimization, and delivering solutions that meet both user and business needs.</p>  
                     </div>
                 </div>
                 {/* <div className='container'>
