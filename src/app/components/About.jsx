@@ -74,9 +74,7 @@ const About = () => {
                         transition={{ duration: 1 }}
                         >
                             <h1 className='font-intert font-extrabold text-4xl mb-5'>Hi, Im Jenkins Uwagbai</h1>
-
                             <h2 className='font-intert font-bold text-2xl text-blue-500 mb-5'>Frontend Developer</h2>
-
                             <p className='font-intert font-light text-lg mb-4 leading-6'>I specialize in buildng and managing websites and web applications, creating seamless and user-friendly experiences that drive product success. I also enjoy sharing my web development knowledge to help others in the dev community.</p>
 
                             <div className='flex flex-col gap-1 mb-5'>
