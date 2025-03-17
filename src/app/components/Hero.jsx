@@ -30,17 +30,19 @@ import React, { createRef } from 'react'
 import Image from 'next/image'
 import jenkins from '../public/profile.jpg';
 import * as motion from 'motion/react-client';
+import Link from 'next/link';
+import { FaArrowDown } from 'react-icons/fa6';
+import CircularText from './CircularText';
 // import Projects from './project/page';
 // import { useInView } from 'framer-motion';
 // import { useInView, useViewportScroll } from 'framer-motion';
 
 const HomePage = () => {
-  // const ball = {
-  //   width: 100,
-  //   height: 100,
-  //   backgroundColor: "#dd00ee",
-  //   borderRadius: "50%",
-  // }
+  const circle = {
+    width: 48,
+    height: 65,
+    backgroundColor: "transparent",
+  }
 
   // const ref = createRef()
   // const { isInView } = useInView();
@@ -49,32 +51,52 @@ const HomePage = () => {
     <div className='py-20 bg-gradient-to-b from-blue-500 to-purple-500'>
       {/* <Navbar /> */}
       <div className='flex flex-col md:flex-row gap-14 my-20 items-center'>
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className='container w-full md:1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left gap-5'
-        >
-          <h2 className='text-4xl font-intert'>Hello, I&apos;m</h2>
-
-          <h1 className='text-6xl md:text-9xl font-extrabold font-intert'>Jenkins <br /> Uwagbai</h1>
-
-          <h2 className='text-2xl'>Frontend Developer | Tech Enthusiast</h2>
-
-          <motion.button 
-            initial={{ scale: 0 }} 
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileTap={{ scale: 1.1 }}
-            whileHover={{ scale: 0.9 }}
-            className='bg-blue-500 py-2 px-8 rounded-2xl'
+        <div className='flex flex-col relative'>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className='container w-full md:1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left gap-5'
           >
-            Hire Me!
-          </motion.button>
-        </motion.div>
-        {/* <div className='container w-1/2 bg-primary flex flex-col justify-center place-items-start text-left gap-5'>
-          
-        </div> */}
+            <h2 className='text-4xl font-intert'>Hello, I&apos;m</h2>
+            <h1 className='text-6xl md:text-9xl font-extrabold font-intert'>Jenkins <br /> Uwagbai</h1>
+            <h2 className='text-2xl'>Frontend Developer | IT Support</h2>
+
+            <motion.button 
+              initial={{ scale: 0 }} 
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              whileTap={{ scale: 1.1 }}
+              whileHover={{ scale: 0.9 }}
+              className='bg-blue-500 py-2 px-8 rounded-2xl'
+            >
+              Hire Me!
+            </motion.button>
+          </motion.div>
+
+          {/* <motion.div
+            style={circle}
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 5, ease: 'linear' }}
+            className='rounded-xl absolute top-96 left-96'
+          >
+            <Link href='#contact'>
+              <div 
+              // className='flex flex-col gap-2 justify-center place-items-center'
+              >
+                <CircularText
+                  text="CONTACT*ME*CONTACT*ME"
+                  onHover='speedUp'
+                  spinDuration={20}
+                  className='custom-class'
+                />
+                <FaArrowDown className='text-xl'/>
+              </div>
+            </Link>
+          </motion.div> */}
+        </div>
+        
+
         <div className='w-full md:w-1/2 flex justify-center'>
           <motion.div
             initial={{ opacity: 0, x: 100 }}

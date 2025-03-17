@@ -8,10 +8,26 @@ import blog from '../public/blog_shots_so.png';
 import social from '../public/links_shots_so.png';
 import typing from '../public/typing_shots_so.png';
 import portfolio from '../public/portfolio_shots_so.png';
+import lexp from '../public/lexp.png';
+import mitra from '../public/mitra.png';
 import Image from 'next/image';
 
 
 const projects = [
+  {
+    image: mitra,
+    title: 'UI Mitra modern UI/UX design agency website',
+    description: 'Developed a modern UI/UX design agency website using React, Framer Motion, and Tailwind CSS. The website showcases the agency’s services, portfolio, and team, with a focus on clean design, smooth animations, and user experience. Key features include interactive hero section, dynamic portfolio gallery, team member profiles, service offerings, and contact form. The project involved creating a responsive, visually appealing UI with engaging animations and transitions, enhancing the agency’s online presence and attracting new clients.',
+    link: 'http://ui-mitra.netlify.app/',
+    skill: ['React', ',', ' ', 'Framer Motion', ',', ' ', 'Tailwind CSS', ',', ' ', 'JavaScript', ',', ' ', 'Next.js']
+  },
+  {
+    image: lexp,
+    title: 'AI-Powered Lead Generation Platform',
+    description: 'Developed an AI-powered lead generation platform using React, Framer Motion, and Tailwind CSS. The platform integrates with LinkedIn, Twitter, Facebook, and Instagram to find, connect, and convert high-quality prospects. Key features include advanced AI search, multi-platform integration, automated lead enrichment, precision targeting, performance analytics, and enterprise security. The project involved creating a responsive, interactive UI with smooth animations and transitions, enhancing user experience and driving business growth.',
+    link: 'https://lexp.webxela.com/',
+    skill: ['React', ',', ' ', 'Framer Motion', ',', ' ', 'Tailwind CSS', ',', ' ', 'TypeScript', ',', ' ', 'API']
+  },
   { image: yayyu, 
     title: 'Yayyu E-commerce Web App', 
     description: 'Developing a user-friendly e-commerce web application designed to help users and prospective clients seamlessly browse and purchase products. The project utilizes modern web technologies such as HTML, TailwindCSS, React, and Next.js, while leveraging Shopify for its e-commerce functionality.', 
@@ -67,6 +83,7 @@ const projects = [
     link: 'https://social-links-profile-jenkins.netlify.app/', 
     skill: ['HTML', ',', ' ', 'CSS'] 
   },
+  
 ];
 
 const Projects = () => {
