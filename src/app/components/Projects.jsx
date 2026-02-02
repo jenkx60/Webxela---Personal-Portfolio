@@ -41,7 +41,7 @@ const projects = [
   },
   {
     image: coconut,
-    title: 'Coconut',
+    title: 'Coconut Africa',
     subtitle: 'Africa’s Retail Growth Platform',
     description: 'A comprehensive growth platform for African retail brands, offering global shipping, business compliance, multi-currency banking, and premium packaging services.',
     link: 'https://withcoconut.com/',

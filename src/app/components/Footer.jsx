@@ -6,7 +6,7 @@ import { MdEmail } from 'react-icons/md';
 const Footer = () => {
   return (
     <footer className='w-full bg-zinc-950 border-t border-white/5 pt-20 pb-10 text-zinc-400'>
-        <div className='container mx-auto px-6'>
+        <div className='container mx-auto px-0'>
             <div className='flex flex-col md:flex-row justify-between items-center gap-8 mb-12'>
                 
                 {/* Brand */}
