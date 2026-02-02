@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa6';
+import { FaGithub, FaTwitter, FaLinkedin, FaTiktok, FaWhatsapp } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
 
 const Footer = () => {
@@ -18,9 +18,10 @@ const Footer = () => {
                 {/* Socials */}
                 <div className='flex space-x-6'>
                     <Link href='https://github.com/jenkx60' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-1'> <FaGithub size={20}/></Link>
-                    <Link href='https://twitter.com' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-blue-400 hover:text-white transition-all transform hover:-translate-y-1'> <FaTwitter size={20}/></Link>
-                    <Link href='https://linkedin.com' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-blue-700 hover:text-white transition-all transform hover:-translate-y-1'> <FaLinkedin size={20}/></Link>
-                    <Link href='mailto:jenkinsu@hotmail.com' className='p-3 bg-zinc-900 rounded-full hover:bg-green-600 hover:text-white transition-all transform hover:-translate-y-1'> <MdEmail size={20}/></Link>
+                    <Link href='https://x.com/iamjenkinsb?s=21' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-blue-400 hover:text-white transition-all transform hover:-translate-y-1'> <FaTwitter size={20}/></Link>
+                    <Link href='https://www.linkedin.com/in/jenkins-uwagbai/' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-blue-700 hover:text-white transition-all transform hover:-translate-y-1'> <FaLinkedin size={20}/></Link>
+                    <Link href='https://wa.me/2349131779025' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-green-600 hover:text-white transition-all transform hover:-translate-y-1'> <FaWhatsapp size={20}/></Link>
+                    <Link href='https://www.tiktok.com/@_jenkx_dev?_r=1&_t=ZS-93aru8EwTjT' target="_blank" className='p-3 bg-zinc-900 rounded-full hover:bg-[#FE2C55] hover:text-white transition-all transform hover:-translate-y-1'> <FaTiktok size={20}/></Link>
                 </div>
             </div>
 
