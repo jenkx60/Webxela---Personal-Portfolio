@@ -27,7 +27,7 @@ const projects = [
     image: rally,
     title: 'Rally',
     subtitle: 'Collaborative Event Planning Platform',
-    description: 'A sophisticated platform designed to turn group chats into real plans. It features a robust multi-step event creation flow, comprehensive attendee management, and real-time payout tracking, all powered by a flexible Mock-Data First architecture.',
+    description: 'A sophisticated platform designed to turn group chats into real plans. It features a robust multi-step event creation flow, comprehensive attendee management, and real-time payout tracking.',
     link: 'https://rally-v1.netlify.app/',
     skills: ['Next.js', 'TypeScript', 'Zustand', 'Supabase', 'Lucide React']
   },
