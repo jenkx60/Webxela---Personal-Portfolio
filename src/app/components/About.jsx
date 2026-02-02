@@ -1,144 +1,123 @@
-// import React from 'react'
-
-// const About = () => {
-//   return (
-//     <div>
-//       <section className='py-20'>
-//           <h2 className='text-3xl font-bold text-center'>About Me</h2>
-//           <div className='flex flex-col gap-4 justify-center place-items-center w-1/2 mx-auto mt-5'>
-//             <p className='text-gray-400 text-left'>I&apos;m a Frontend Web Developer building and managing the Frontend of Websites and Web Applications that leads to the success of the overall product. Check out some of my work in the Projects section.</p>
-//             <p className='text-gray-400 text-left'>I also like sharing content related to the stuff that I have learned in Web Development so it can help other people of the Dev Community. Feel free to Connect on LinkedIn and GitHub where I post useful content related to Web Development and Programming</p>
-//           </div>
-//       </section>
-//     </div>
-//   )
-// }
-
-// export default About
-
+"use client"
 import Link from 'next/link';
-import React from 'react';
-import * as motion from 'motion/react-client';
-// import DownloadCVButton from '../components/DownloadCVButton';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import undraw from '../public/undraw_web-developer.svg';
-// import ProgressBar from '../components/ProgressBar';
-import SkillWall from '../components/SkillWall';
+import SkillWall from './SkillWall';
+import { useGSAP } from '../../hooks/useGSAP';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    
+    // Animate Section Titles
+    gsap.fromTo(".about-title",
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: ".about-title-container", start: "top 80%" } }
+    );
+
+    // Animate Image
+    gsap.fromTo(".about-image",
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 1, scrollTrigger: { trigger: ".about-content", start: "top 70%" } }
+    );
+
+    // Animate Content
+    gsap.fromTo(".about-text",
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 1, delay: 0.2, scrollTrigger: { trigger: ".about-content", start: "top 70%" } }
+    );
+
+  }, { scope: containerRef });
+
   return (
-    <div className='my-20 px-4 md:px-20'>
-        <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5 }}
-        >
-            <div className='relative flex justify-center mt-20'>
-                <div className='absolute text-center mt-5'>
-                    <h1 className='text-2xl md:text-4xl font-intert font-extrabold text-blue-500 pb-4'>ABOUT ME</h1>
-                    <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
-                </div>
-                <div>
-                    <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>ABOUT ME</h1>
-                </div>
-            </div>
-        </motion.div>
+    <section ref={containerRef} id="about" className='py-24 px-2 md:px-6 bg-zinc-950 text-white relative border-t border-white/5 overflow-hidden'>
         
-        <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, delay: 0.8 }}
-        >
-            <div className='container my-10 flex flex-col md:flex-row items-center'>
-                <div className='w-full md:w-1/2 flex justify-center mb-20 md:mb-0'>
-                    <motion.div
-                        initial={{ opacity: 0, y: 0 }}
-                        animate={{ opacity: 1, y: 100 }}
-                        transition={{ duration: 1 }}
-                    >
-                        <Image
-                            src={undraw}
-                            alt="Web Developer"
-                            width={500}
-                            className='w-3/4 md-w-full'
-                        />
-                    </motion.div>
-                    
-                </div>
-                <div className='w-full md:w-1/2 mt-10 md:mt-0 px-4 md:px-10'>
-                    <motion.div
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1 }}
-                        >
-                            <h1 className='font-intert font-extrabold text-4xl mb-5'>Hi, I&apos;m Jenkins Uwagbai</h1>
-                            <h2 className='font-intert font-bold text-2xl text-blue-500 mb-5'>Frontend Developer</h2>
-                            <p className='font-intert font-light text-lg mb-4 leading-6'>I specialize in buildng and managing websites and web applications, creating seamless and user-friendly experiences that drive product success. I also enjoy sharing my web development knowledge to help others in the dev community.</p>
-
-                            <div className='flex flex-col gap-1 mb-5'>
-                                <p><strong className='text-lg mr-14'>Phone:</strong>+2349131779025</p>
-                                <p><strong className='text-lg mr-16'>Email:</strong>jenkinsu@hotmail.com</p>
-                                <p><strong className='text-lg mr-9'>Location:</strong>Lagos, Nigeria</p>
-                                <p><strong className='text-lg mr-7'>Freelance:</strong><span className='text-green-500'>Available</span></p>
-                            </div>
-
-                            <motion.button 
-                                initial={{ scale: 0 }} 
-                                animate={{ scale: 1 }}
-                                transition={{ duration: 0.5 }}
-                                whileTap={{ scale: 1.1 }}
-                                whileHover={{ scale: 0.9 }}
-                                className='bg-blue-500 py-2 px-8 rounded-2xl'
-                            >
-                                <a download href="../public/Jenkins_Uwagbai_CV.pdf">Download CV</a>
-                            </motion.button>
-                    </motion.div>
-                </div>
-            </div>
-        </motion.div>
+        {/* Title */}
+        <div className='about-title-container relative flex justify-center py-10 mb-6 md:mb-10'>
+            <h1 className='about-title text-3xl sm:text-4xl md:text-5xl font-bold text-center z-10 relative'>
+                About <span className='text-blue-500'>Me</span>
+                <span className='block h-1 w-20 md:w-24 bg-blue-500 mt-4 mx-auto rounded-full'></span>
+            </h1>
+            <h1 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl sm:text-6xl md:text-9xl font-extrabold text-white/5 whitespace-nowrap pointer-events-none select-none z-0'>
+                MY STORY
+            </h1>
+        </div>
         
-
-        <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true}}
-            transition={{ duration: 1, delay: 0.5 }}
-        >
-            <div className='relative flex flex-col items-center mt-32'>
-                <div className='absolute text-center mt-5'>
-                    <h1 className='text-2xl md:text-4xl font-intert font-extrabold text-blue-500 pb-4'>SKILLS</h1>
-                    <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
-                </div>
-                <div>
-                    <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>SKILLS</h1>
-                </div>
+        <div className='container mx-auto about-content flex flex-col lg:flex-row items-center gap-10 lg:gap-16'>
+            {/* Image */}
+            <div className='w-full lg:w-1/2 about-image flex justify-center px-4 sm:px-0'>
+                 <div className="relative p-6 md:p-8 bg-zinc-900/50 rounded-2xl border border-white/5 w-full max-w-md lg:max-w-none">
+                    <Image
+                        src={undraw}
+                        alt="Web Developer Illustration"
+                        width={500}
+                        height={400}
+                        className='w-full h-auto drop-shadow-2xl'
+                    />
+                 </div>
             </div>
-        </motion.div>
-        
-        <motion.div>
-            <div className='container my-10 flex flex-col md:flex-row items-center'>
-                <div className='w-full md:w-1/2 px-4 md:px-10'>
-                    <div className='flex flex-col gap-4'>
-                        <h1 className='font-intert font-bold text-2xl md:text-3xl'><strong>Bringing Ideas to Life with Modern Frontend Development</strong></h1>
-                        <p className='font-intert font-light text-lg md:text-xl leading-6'>I'm a skilled Frontend Web Developer specializing in building responsive, user-friendly websites and web applications. With expertise in HTML, CSS, JavaScript, BootStrap, TailwindCSS, Git, GitHub and modern frameworks like React and NextJs.</p> 
-                        <p className='font-intert font-light text-lg md:text-xl leading-6'>I craft seamless interfaces that enhance user experience and contribute to product success. My focus is on clean code, performance optimization, and delivering solutions that meet both user and business needs.</p>  
+
+            {/* Content */}
+            <div className='w-full lg:w-1/2 about-text space-y-6 px-4 sm:px-0'>
+                <h3 className='text-xl sm:text-2xl font-semibold text-blue-400'>Who am I?</h3>
+                <h2 className='text-3xl sm:text-4xl font-bold leading-tight'>I'm Jenkins Uwagbai, a <span className="text-white">Frontend Architect</span>.</h2>
+                <p className='text-zinc-400 text-base sm:text-lg leading-relaxed'>
+                    I specialize in building and managing high-performance websites and web applications. My passion lies in creating seamless, user-friendly experiences that drive product success. 
+                </p>
+                <p className='text-zinc-400 text-lg leading-relaxed'>
+                     Beyond coding, I am an active contributor to the developer community, sharing knowledge and insights to help others grow in their tech journey.
+                </p>
+
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 py-6 text-zinc-300'>
+                    <div className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        <p className="text-sm sm:text-base"><strong>Top Skill:</strong> React / Next.js</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        <p className="text-sm sm:text-base"><strong>Email:</strong> jenkinsu@hotmail.com</p>
+                    </div>
+                     <div className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        <p className="text-sm sm:text-base"><strong>Location:</strong> Lagos, Nigeria</p>
+                    </div>
+                     <div className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <p className="text-sm sm:text-base"><strong>Status:</strong> Available for Hire</p>
                     </div>
                 </div>
-                {/* <div className='container'>
-                    <ProgressBar />
-                </div> */}
+
+                <div className="pt-4 flex flex-col sm:flex-row">
+                    <a 
+                        href="/Jenkins_Uwagbai_CV.pdf" 
+                        download 
+                        className='w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20'
+                    >
+                        Download Resume
+                    </a>
+                </div>
             </div>
-        </motion.div>
+        </div>
 
-        <motion.div>
-            <SkillWall />
-        </motion.div>
+        {/* Skills Section */}
+        <div id="skills" className="mt-20 md:mt-32 scroll-mt-24">
+             <div className='text-center mb-12 md:mb-16 space-y-4 px-4'>
+                <h3 className='text-sm font-bold tracking-widest text-blue-500 uppercase'>My Tech Stack</h3>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Tools I use to build magic</h2>
+             </div>
+             <div className="px-4">
+                <SkillWall />
+             </div>
+        </div>
 
-        
-    </div>
+    </section>
   )
 }
 
-export default About
+export default About;

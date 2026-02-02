@@ -1,16 +1,20 @@
 "use client";
 import React, { useState, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import * as motion from 'motion/react-client';
+import { useGSAP } from '../../hooks/useGSAP';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null;
 
 const ContactForm = () => {
   const [ formData, setFormData ] = useState({ name: "", email: "", message: "" });
-
+  const [ loading, setLoading ] = useState(false);
+  const containerRef = useRef(null);
   const inputRef = useRef(null);
 
   const handleChange = (e) => {
@@ -19,76 +23,85 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    inputRef.current.reset();
+    setLoading(true);
 
     const { data, error } = await supabase.from("contacts").insert([formData]);
-    if (error) 
+    if (error) {
       console.log(error);
-    else alert("Message sent successfully");
-
+      alert("Something went wrong. Please try again.");
+    } else {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+        inputRef.current.reset();
+    }
+    setLoading(false);
   };
 
+  useGSAP(() => {
+    gsap.fromTo(".contact-reveal",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.1, scrollTrigger: { trigger: containerRef.current, start: "top 70%" } }
+    );
+  }, { scope: containerRef });
+
   return (
-    <div>
-      <section className='py-20 text-center'>
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-        >
-          <div className='relative flex flex-col items-center mt-20 mb-20'>
-              <div className='absolute text-center mt-5'>
-                <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>CONTACT ME</h1>
-                <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
-              </div>
+    <section ref={containerRef} id="contact" className='py-20 md:py-28 px-2 bg-zinc-950 text-white border-t border-white/5'>
+      <div className='container mx-auto max-w-4xl text-center'>
+        
+         <div className="contact-reveal mb-8 md:mb-12 w-full">
+            <h2 className='text-xs sm:text-sm font-bold tracking-widest text-blue-500 uppercase mb-4'>Get In Touch</h2>
+            <h1 className='text-2xl md:text-4xl font-bold'>Let's Build Something Awesome.</h1>
+         </div>
 
-              <div>
-                <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>CONTACT ME</h1>
-              </div>
-          </div>
-        </motion.div>
-                  
+         <div className="contact-reveal bg-zinc-900 border border-zinc-800 rounded-3xl p-5 md:p-12 shadow-2xl">
+            <form onSubmit={handleSubmit} ref={inputRef} className='space-y-6'>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="text-left space-y-2">
+                        <label className="text-sm font-medium text-zinc-400">Your Name</label>
+                         <input 
+                            name='name' 
+                            placeholder='John Doe' 
+                            onChange={handleChange} 
+                            className='w-full p-3 sm:p-4 bg-zinc-950 border border-zinc-700 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 transition-colors' 
+                            required 
+                        />
+                    </div>
+                     <div className="text-left space-y-2">
+                        <label className="text-sm font-medium text-zinc-400">Email Address</label>
+                        <input 
+                            type="email" 
+                            name='email' 
+                            placeholder='john@example.com' 
+                            onChange={handleChange} 
+                            className='w-full p-3 sm:p-4 bg-zinc-950 border border-zinc-700 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 transition-colors' 
+                            required 
+                        />
+                    </div>
+                </div>
 
-        <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5 }}
-          >
-          <form onSubmit={handleSubmit} ref={inputRef} className='container mt-6 space-y-6 flex flex-col justify-center items-center w-full md:w-1/2 px-4'>
-              <input 
-                name='name' 
-                placeholder='Your Name' 
-                onChange={handleChange} 
-                className='w-full p-2 border rounded text-black placeholder:text-sm' 
-                required 
-              />
-              
+                <div className="text-left space-y-2">
+                    <label className="text-sm font-medium text-zinc-400">Your Message</label>
+                    <textarea 
+                        name="message" 
+                        placeholder='Tell me about your project...' 
+                        onChange={handleChange} 
+                        className='w-full p-3 sm:p-4 bg-zinc-950 border border-zinc-700 rounded-xl h-40 text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 transition-colors resize-none' 
+                        required
+                    ></textarea>
+                </div>
 
-              <input 
-                type="email" 
-                name='email' 
-                placeholder='example@email.com' 
-                onChange={handleChange} 
-                className='w-full p-2 border rounded text-black placeholder:text-sm' 
-                required 
-              />
+                <button 
+                    type='submit' 
+                    disabled={loading}
+                    className='w-full py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all transform hover:scale-[1.01] shadow-lg shadow-blue-600/20 disabled:opacity-50 disabled:cursor-not-allowed'
+                >
+                    {loading ? 'Sending...' : 'Send Message'}
+                </button>
+            </form>
+         </div>
 
-              <textarea 
-                name="message" 
-                placeholder='Your Message' 
-                onChange={handleChange} 
-                className='w-full p-2 border rounded h-32 text-black placeholder:text-sm' 
-                required
-              ></textarea>
-
-              <button type='submit' className='bg-blue-500 text-white px-6 py-2 rounded'>Send Message</button>
-          </form>
-        </motion.div>
-
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

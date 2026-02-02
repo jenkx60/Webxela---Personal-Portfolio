@@ -1,5 +1,11 @@
-import React from 'react';
-import * as motion from 'motion/react-client';
+"use client"
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import { useGSAP } from '../../hooks/useGSAP';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+
 import password from '../public/pass_shots_so.png';
 import sunny from '../public/sunny_shots_so.png';
 import yayyu from '../public/yayyu_app_shots_so.png';
@@ -10,129 +16,169 @@ import typing from '../public/typing_shots_so.png';
 import portfolio from '../public/portfolio_shots_so.png';
 import lexp from '../public/lexp.png';
 import mitra from '../public/mitra.png';
-import Image from 'next/image';
+import coconut from '../public/coconut.png';
+import rally from '../public/rally.png';
+import live from '../public/livenow.png';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
+    image: rally,
+    title: 'Rally',
+    subtitle: 'Collaborative Event Planning Platform',
+    description: 'A sophisticated platform designed to turn group chats into real plans. It features a robust multi-step event creation flow, comprehensive attendee management, and real-time payout tracking, all powered by a flexible Mock-Data First architecture.',
+    link: 'https://rally-v1.netlify.app/',
+    skills: ['Next.js', 'TypeScript', 'Zustand', 'Supabase', 'Lucide React']
+  },
+  {
+    image: live,
+    title: 'Football Live Now',
+    subtitle: 'Real-time Scores & Fixtures Tracker',
+    description: 'A modern, high-performance football application that delivers live scores, match fixtures, and league updates for all major leagues globally. It features a premium UI with timezone-aware scheduling and smooth motion animations.',
+    link: 'https://livenow1.netlify.app',
+    skills: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion', 'Supabase', 'Zustand']
+  },
+  {
+    image: coconut,
+    title: 'Coconut',
+    subtitle: 'Africa’s Retail Growth Platform',
+    description: 'A comprehensive growth platform for African retail brands, offering global shipping, business compliance, multi-currency banking, and premium packaging services.',
+    link: 'https://withcoconut.com/',
+    skills: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion', 'Zustand', 'TanStack Query', 'Firebase']
+  },
+  {
     image: mitra,
-    title: 'UI Mitra modern UI/UX design agency website',
-    description: 'Developed a modern UI/UX design agency website using React, Framer Motion, and Tailwind CSS. The website showcases the agency’s services, portfolio, and team, with a focus on clean design, smooth animations, and user experience. Key features include interactive hero section, dynamic portfolio gallery, team member profiles, service offerings, and contact form. The project involved creating a responsive, visually appealing UI with engaging animations and transitions, enhancing the agency’s online presence and attracting new clients.',
+    title: 'UI Mitra',
+    subtitle: 'Design Agency Website',
+    description: 'A modern UI/UX design agency website focusing on clean design, smooth animations, and user experience.',
     link: 'http://ui-mitra.netlify.app/',
-    skill: ['React', ',', ' ', 'Framer Motion', ',', ' ', 'Tailwind CSS', ',', ' ', 'JavaScript', ',', ' ', 'Next.js']
+    skills: ['React', 'Framer Motion', 'Tailwind']
   },
   {
     image: lexp,
-    title: 'AI-Powered Lead Generation Platform',
-    description: 'Developed an AI-powered lead generation platform using React, Framer Motion, and Tailwind CSS. The platform integrates with LinkedIn, Twitter, Facebook, and Instagram to find, connect, and convert high-quality prospects. Key features include advanced AI search, multi-platform integration, automated lead enrichment, precision targeting, performance analytics, and enterprise security. The project involved creating a responsive, interactive UI with smooth animations and transitions, enhancing user experience and driving business growth.',
+    title: 'Lexp AI',
+    subtitle: 'Lead Generation Platform',
+    description: 'AI-powered platform integrating LinkedIn & Twitter to find and convert high-quality prospects.',
     link: 'https://lexp.webxela.com/',
-    skill: ['React', ',', ' ', 'Framer Motion', ',', ' ', 'Tailwind CSS', ',', ' ', 'TypeScript', ',', ' ', 'API']
+    skills: ['React', 'TypeScript', 'AI Integration']
   },
-  { image: yayyu, 
-    title: 'Yayyu E-commerce Web App', 
-    description: 'Developing a user-friendly e-commerce web application designed to help users and prospective clients seamlessly browse and purchase products. The project utilizes modern web technologies such as HTML, TailwindCSS, React, and Next.js, while leveraging Shopify for its e-commerce functionality.', 
+  { 
+    image: yayyu, 
+    title: 'Yayyu Store', 
+    subtitle: 'E-commerce Web App',
+    description: 'User-friendly e-commerce app with seamless browsing and Shopify integration.', 
     link: 'https://github.com/jenkx60/yayyu_product.git', 
-    skill: ['HTML', ',', ' ', 'TailwindCSS', ',', ' ', 'React', ',', ' ', 'Next.Js', ',', ' ', 'Shopify'] 
+    skills: ['Next.js', 'Shopify', 'Tailwind'] 
   },
   {
     image: typing,
-    title: 'Typing Test App',
-    description: 'A sleek and responsive typing test web app built with Next.js. It helps users improve their typing speed and accuracy with real-time performance tracking. Features include interactive typing area with dynamic word generation, real-time WPM and accuracy tracking, clean and intuitive UI, optimized for speed and responsiveness. This project showcases my skills in frontend development, state management, and UI/UX design.',
+    title: 'Typing Master',
+    subtitle: 'Speed Test App',
+    description: 'Sleek typing test app with real-time WPM tracking and dynamic word generation.',
     link: 'https://jenkx-typing-test.netlify.app/',
-    skill: ['Next.js', ',', ' ', 'JavaScript', ',', ' ', 'HTML', ',',]
+    skills: ['Next.js', 'State Management']
   },
   {
     image: portfolio,
-    title: 'Personal Portfolio Website',
-    description: 'A modern and responsive portfolio website designed to showcase my skills, projects, experience, and achievements as a frontend web developer. Features includes; Dynamic Project Showcase with live demos, Contact Form powered by Supabase, Downloadable Resume for easy access, Smooth UI/UX with fast navigation. This project highlights my expertise in frontend development, UI/UX design, and state management while ensuring a seamless user experience.',
+    title: 'Portfolio V1',
+    subtitle: 'Personal Website',
+    description: 'My previous portfolio showcase featuring a contact form and project gallery.',
     link: 'https://jenkinsuwagbai.webxela.com',
-    skill: ['Next.js', ',', ' ', 'React', ',', ' ', 'JavaScript', ',', ' ', 'Supabase', ',', ' ', 'TailwindCSS', ',', ' ','HTML']
+    skills: ['Next.js', 'Supabase']
   },
   { 
-    image: password.src, 
-    title: 'Password Generator', 
-    description: 'The Password Generator is a simple, user-friendly web application designed to create secure, random passwords using HTML, CSS, and JavaScript. The intuitive interface allows users to specify criteria such as password length and inclusion of password lenght, uppercase letters, lowercase letters, numbers, special characters and a clipboard. With a click of a button, the generator produces a strong, unique password, enhancing online security and protecting against unauthorized access.', 
+    image: password, 
+    title: 'SecurePass', 
+    subtitle: 'Password Generator',
+    description: 'Utility tool for generating secure, strong passwords with customizable criteria.', 
     link: 'https://password-generator-474.netlify.app/', 
-    skill: ['HTML', ',', ' ', 'CSS', ',', ' ', 'JavaScript'] 
+    skills: ['JavaScript', 'HTML/CSS'] 
   },
-  { 
-    image: sunny.src, 
-    title: 'SunnySide Landing Page', 
-    description: 'A beautifully designed, responsive landing page for a creative agency. This project focuses on clean UI, smooth interactions, and modern web design principles. Features: Engaging Hero Section with a bold CTA, Services Overview showcasing agency offerings, Client Testimonials for credibility, Grid-Based Gallery displaying creative work, Fully Responsive Design for seamless user experience. This project demonstrates my expertise in frontend development, responsive design, and UI/UX best practices.', 
-    link: 'https://sunnyside-agency-landing-page-j.netlify.app/', 
-    skill: ['HTML',',', ' ', 'CSS',',', ' ', 'JavaScript'] 
-  },
-  { 
-    image: order, 
-    title: 'Order Summary Card', 
-    description: 'The Order Summary Card is a sleek and responsive component built with HTML and CSS, designed to provide a clear and concise overview of a customers order. Featuring a visually appealing layout, the card displays key details such as product names, quantities, prices, and the total amount. Perfect for e-commerce websites, it enhances the user experience by offering an easy-to-read summary, ensuring customers can quickly review their purchases before proceeding to checkout.', 
-    link: 'https://order-summary-card-j.netlify.app/', 
-    skill: ['HTML', ',', ' ', 'CSS'] 
-  },
-  { 
-    image: blog, 
-    title: 'Blog Post Card', 
-    description: 'The Blog Post Card is an elegant and modern component crafted with HTML and CSS, designed to highlight individual blog posts in a visually appealing manner. This card includes a title, summary, publication date, and a featured image, providing readers with a snapshot of the content. Ideal for blogs and news websites, it enhances readability and engagement by presenting posts in a clean, organized layout, encouraging users to click through and read the full articles.', 
-    link: 'https://blog-review-card-main.netlify.app/', 
-    skill: ['HTML', ',', ' ', 'CSS'] 
-  },
-  { 
-    image: social, 
-    title: 'Social Links Card', 
-    description: 'The Social Links Card is a stylish and compact component created with HTML and CSS, designed to showcase social media profiles in a visually cohesive manner. Featuring recognizable icons and links to platforms such as Facebook, Twitter, Instagram, and LinkedIn, this card offers a convenient way for users to connect and engage with you across various social networks. Perfect for personal websites, portfolios, and blogs, it enhances your online presence by providing a neat and organized way to access your social media channels.', 
-    link: 'https://social-links-profile-jenkins.netlify.app/', 
-    skill: ['HTML', ',', ' ', 'CSS'] 
-  },
-  
 ];
 
+const ProjectCard = ({ project, index }) => {
+    return (
+        <div className="project-card group relative bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors duration-500">
+            {/* Image Container */}
+            <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent z-10 opacity-60" />
+                <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill 
+                    className="object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-20 p-6 -mt-10">
+                <div className="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                        <p className="text-sm text-zinc-400">{project.subtitle}</p>
+                    </div>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-800 rounded-full hover:bg-blue-600 transition-colors text-white">
+                        <FaExternalLinkAlt size={14} />
+                    </a>
+                </div>
+
+                <p className="text-zinc-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+                    {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                    {project.skills.map((skill, i) => (
+                        <span key={i} className="text-xs font-medium px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full border border-zinc-700">
+                            {skill}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const Projects = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    const cards = gsap.utils.toArray('.project-card');
+    
+    cards.forEach((card, i) => {
+        gsap.fromTo(card,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            }
+        );
+    });
+
+  }, { scope: containerRef });
+
   return (
-    <div className='container my-20 px-4 md:px-20'>
-      <section>
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-        >
-          <div className='relative flex flex-col items-center mt-20 mb-20'>
-            <div className='absolute text-center mt-5'>
-              <h1 className='text-4xl font-intert font-extrabold text-blue-500 pb-4'>PROJECT</h1>
-              <hr className=' border-blue-500 border-2 w-24 md:w-58 mx-auto'/>
-            </div>
+    <section ref={containerRef} id="projects" className='py-24 md:py-32 px-2 bg-zinc-950 text-white'>
+      <div className='container mx-auto'>
+        <div className='mb-12 md:mb-20 space-y-4 max-w-2xl'>
+            <h2 className='text-xs sm:text-sm font-bold tracking-widest text-blue-500 uppercase'>Selected Work</h2>
+            <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight'>Digital Products & <br className="hidden sm:block" /> Experiments.</h1>
+        </div>
 
-            <div>
-              <h1 className='text-6xl md:text-9xl font-intert font-extrabold opacity-10'>PROJECT</h1>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, delay: 0.8 }}
-        >
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {projects.map((project, index) => (
-              <div key={index} className='p-4 bg-gray-200 rounded-lg shadow-md'>
-                <Image src={project.image} alt={project.title} width={300} height={300} className='rounded-lg pb-8' />
-                {/* <div className='flex justify-between items-center mb-3'> */}
-                  <h3 className='text-xl font-semibold text-black mb-2'>{project.title}</h3>
-                  <p className='text-blue-500 font-semibold pb-3'>{project.skill.join('')}</p>
-                {/* </div> */}
-                <p className='text-gray-600'>{project.description}</p>
-                <button className='bg-blue-500 text-white py-2 px-4 rounded-lg mt-4'>
-                  <a href={project.link} className='block'>Live Demo</a>
-                </button>
-              </div>
+                <ProjectCard key={index} project={project} index={index} />
             ))}
-          </div>
-        </motion.div>
-        
-      </section>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

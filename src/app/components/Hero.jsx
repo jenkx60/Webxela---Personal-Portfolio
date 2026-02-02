@@ -1,123 +1,110 @@
-// import Image from 'next/image';
-// import React from 'react';
-// import profile from '../public/profile.jpg';
-
-// const Hero = () => {
-//   return (
-//     <div className='h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-blue-500 to-purple-500 text-white'>
-//         <Image 
-//             src={profile} 
-//             width={300} 
-//             height={300} 
-//             className='rounded-full shadow-lg' 
-//             alt='Jenkins'
-//         />
-//         <h1 className='text-4xl font-bold mt-4'>Hi, I&apos;m Jenkins Uwagbai</h1>
-//         <p className='text-lg mt-2'>Frontend Developer | Tech Enthusiast</p>
-//         <div className='mt-6'>
-//             <button className='px-6 py-3 bg-white text-blue-500 rounded-lg shadow-lg'>View Projects</button>
-//             <button className='ml-4 px-6 py-3 border border-white text-white rounded-lg'>Hire Me</button>
-//         </div>
-//     </div>
-//   );
-// };
-
-// export default Hero;
-
-import React, { createRef } from 'react'
-// import Navbar from './components/Navbar'
-// import About from './about/page'
-import Image from 'next/image'
-import jenkins from '../public/profile.jpg';
-import * as motion from 'motion/react-client';
+"use client"
+import React, { useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useGSAP } from '../../hooks/useGSAP';
+import gsap from 'gsap';
+import jenkins from '../public/profile.jpg';
 import { FaArrowDown } from 'react-icons/fa6';
-import CircularText from './CircularText';
-// import Projects from './project/page';
-// import { useInView } from 'framer-motion';
-// import { useInView, useViewportScroll } from 'framer-motion';
 
-const HomePage = () => {
-  const circle = {
-    width: 48,
-    height: 65,
-    backgroundColor: "transparent",
-  }
+const Hero = () => {
+  const containerRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const ctaRef = useRef(null);
+  const imageRef = useRef(null);
+  const scrollIndicatorRef = useRef(null);
 
-  // const ref = createRef()
-  // const { isInView } = useInView();
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    // Initial state setup to avoid FOUC
+    gsap.set([titleRef.current, subtitleRef.current, ctaRef.current, imageRef.current, scrollIndicatorRef.current], { opacity: 0, y: 30 });
+
+    tl.to(imageRef.current, { opacity: 1, y: 0, duration: 1.2, ease: "expo.out" })
+      .to(titleRef.current, { opacity: 1, y: 0, duration: 1, stagger: 0.1 }, "-=0.8")
+      .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.6")
+      .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
+      .to(scrollIndicatorRef.current, { opacity: 1, y: 0, duration: 0.6 }, "-=0.2");
+
+    // Floating animation for image
+    gsap.to(imageRef.current, {
+      y: 15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 1.5 // Start after entrance
+    });
+    
+    // Scroll indicator bounce
+    gsap.to(scrollIndicatorRef.current, {
+        y: 10,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        delay: 2
+    });
+
+  }, { scope: containerRef });
 
   return (
-    <div className='py-20 bg-gradient-to-b from-blue-500 to-purple-500'>
-      {/* <Navbar /> */}
-      <div className='flex flex-col md:flex-row gap-14 my-20 items-center'>
-        <div className='flex flex-col relative'>
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className='container w-full md:1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left gap-5'
-          >
-            <h2 className='text-4xl font-intert'>Hello, I&apos;m</h2>
-            <h1 className='text-6xl md:text-9xl font-extrabold font-intert'>Jenkins <br /> Uwagbai</h1>
-            <h2 className='text-2xl'>Frontend Developer | IT Support</h2>
+    <section ref={containerRef} className='relative min-h-screen flex items-center justify-center bg-zinc-950 text-white overflow-hidden py-20 px-6'>
+      {/* Background Ambience */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-600/20 rounded-full blur-[80px] md:blur-[100px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-600/20 rounded-full blur-[80px] md:blur-[100px]" />
+      </div>
 
-            <motion.button 
-              initial={{ scale: 0 }} 
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              whileTap={{ scale: 1.1 }}
-              whileHover={{ scale: 0.9 }}
-              className='bg-blue-500 py-2 px-8 rounded-2xl'
-            >
-              Hire Me!
-            </motion.button>
-          </motion.div>
-
-          {/* <motion.div
-            style={circle}
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 5, ease: 'linear' }}
-            className='rounded-xl absolute top-96 left-96'
-          >
-            <Link href='#contact'>
-              <div 
-              // className='flex flex-col gap-2 justify-center place-items-center'
-              >
-                <CircularText
-                  text="CONTACT*ME*CONTACT*ME"
-                  onHover='speedUp'
-                  spinDuration={20}
-                  className='custom-class'
-                />
-                <FaArrowDown className='text-xl'/>
-              </div>
-            </Link>
-          </motion.div> */}
-        </div>
+      <div className='container mx-auto z-10 flex flex-col md:flex-row items-center justify-between gap-12'>
         
+        {/* Text Content */}
+        <div className='flex-1 text-center md:text-left space-y-6'>
+             <div ref={subtitleRef} className='inline-block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm'>
+                <span className='text-sm font-medium tracking-wide text-gray-300'>FRONTEND ARCHITECT & CREATIVE DEV</span>
+             </div>
+            
+            <div ref={titleRef} className='space-y-4'>
+                <h1 className='text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-tight'>
+                    Jenkins <br />
+                    <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500'>Uwagbai</span>
+                </h1>
+            </div>
 
-        <div className='w-full md:w-1/2 flex justify-center'>
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <Image
-              src={jenkins}
-              alt="Jenkins Uwagbai"
-              width={600}
-              className='rounded-full'
-            />
-          </motion.div>
-          
-          
+            <div ref={ctaRef} className='flex flex-col md:flex-row gap-4 items-center md:items-start pt-6'>
+                <Link href="#projects" className='w-full md:w-auto text-center group relative px-8 py-4 bg-white text-black rounded-full font-semibold overflow-hidden transition-transform hover:scale-105'>
+                    <span className='relative z-10'>View My Work</span>
+                    <div className='absolute inset-0 bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-blue-400 mix-blend-difference' />
+                </Link>
+                <Link href="#contact" className='w-full md:w-auto text-center px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 transition-colors font-medium'>
+                    Get in Touch
+                </Link>
+            </div>
+        </div>
+
+        {/* Hero Image */}
+        <div className='flex-1 flex justify-center md:justify-end relative w-full'>
+             <div ref={imageRef} className='relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] grayscale hover:grayscale-0 transition-all duration-700 ease-out'>
+                <Image
+                  src={jenkins}
+                  alt="Jenkins Uwagbai"
+                  fill
+                  priority
+                  className='object-cover rounded-3xl shadow-2xl'
+                />
+             </div>
         </div>
       </div>
-      {/* <About />
-      <Projects /> */}
-    </div>
-  )
-}
 
-export default HomePage
+      {/* Scroll Indicator */}
+      <div ref={scrollIndicatorRef} className='absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-white/50'>
+        <span className='text-xs uppercase tracking-widest'>Scroll</span>
+        <FaArrowDown />
+      </div>
+
+    </section>
+  );
+};
+
+export default Hero;
