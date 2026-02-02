@@ -74,18 +74,18 @@ const About = () => {
                      Beyond coding, I am an active contributor to the developer community, sharing knowledge and insights to help others grow in their tech journey.
                 </p>
 
-                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 py-6 text-zinc-300'>
-                    <div className="flex items-center gap-3">
+                <div className='grid grid-cols-1 gap-4 py-6 text-zinc-300'>
+                    {/* <div className="flex items-center gap-3">
                         <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                         <p className="text-sm sm:text-base"><strong>Top Skill:</strong> React / Next.js</p>
-                    </div>
+                    </div> */}
                     <div className="flex items-center gap-3">
                         <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                         <p className="text-sm sm:text-base"><strong>Email:</strong> jenkinsu@hotmail.com</p>
                     </div>
                      <div className="flex items-center gap-3">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                        <p className="text-sm sm:text-base"><strong>Location:</strong> Lagos, Nigeria</p>
+                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                        <p className="text-sm sm:text-base"><strong>Location:</strong> Lagos, Nigeria (UTC+1)</p>
                     </div>
                      <div className="flex items-center gap-3">
                         <span className="w-2 h-2 bg-green-500 rounded-full"></span>
