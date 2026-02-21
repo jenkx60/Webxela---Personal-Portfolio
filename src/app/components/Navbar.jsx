@@ -42,6 +42,7 @@ const Navbar = () => {
                 <button
                     onClick={toggleMobileMenu}
                     className='md:hidden focus:outline-none text-2xl text-white z-50' 
+                    aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                 >
                     {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
                 </button>

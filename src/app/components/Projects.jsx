@@ -117,7 +117,7 @@ const ProjectCard = ({ project, index, title }) => {
                         <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
                         <p className="text-sm text-zinc-400">{project.subtitle}</p>
                     </div>
-                    <a href={project.link} aria-labelledby={title} target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-800 rounded-full hover:bg-blue-600 transition-colors text-white">
+                    <a href={project.link} aria-label={title} target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-800 rounded-full hover:bg-blue-600 transition-colors text-white">
                         <FaExternalLinkAlt size={14} />
                     </a>
                 </div>
@@ -167,8 +167,8 @@ const Projects = () => {
     <section ref={containerRef} id="projects" className='py-24 md:py-32 px-2 bg-zinc-950 text-white'>
       <div className='container mx-auto'>
         <div className='mb-12 md:mb-20 space-y-4 max-w-2xl'>
-            <h2 className='text-xs sm:text-sm font-bold tracking-widest text-blue-500 uppercase'>Selected Work</h2>
-            <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight'>Digital Products & <br className="hidden sm:block" /> Experiments.</h1>
+            <p className='text-xs sm:text-sm font-bold tracking-widest text-blue-500 uppercase'>Selected Work</p>
+            <h2 className='text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight'>Digital Products & <br className="hidden sm:block" /> Experiments.</h2>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
