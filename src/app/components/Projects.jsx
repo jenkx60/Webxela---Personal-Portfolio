@@ -5,7 +5,6 @@ import { useGSAP } from '../../hooks/useGSAP';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-
 import password from '../public/pass_shots_so.png';
 import sunny from '../public/sunny_shots_so.png';
 import yayyu from '../public/yayyu_app_shots_so.png';
@@ -84,7 +83,7 @@ const projects = [
     title: 'Portfolio V1',
     subtitle: 'Personal Website',
     description: 'My previous portfolio showcase featuring a contact form and project gallery.',
-    link: 'https://jenkinsuwagbai.webxela.com',
+    link: 'https://jenkinsuwagbai.netlify.app/',
     skills: ['Next.js', 'Supabase']
   },
   { 
@@ -97,7 +96,7 @@ const projects = [
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, title }) => {
     return (
         <div className="project-card group relative bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-colors duration-500">
             {/* Image Container */}
@@ -118,7 +117,7 @@ const ProjectCard = ({ project, index }) => {
                         <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
                         <p className="text-sm text-zinc-400">{project.subtitle}</p>
                     </div>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-800 rounded-full hover:bg-blue-600 transition-colors text-white">
+                    <a href={project.link} aria-labelledby={title} target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-800 rounded-full hover:bg-blue-600 transition-colors text-white">
                         <FaExternalLinkAlt size={14} />
                     </a>
                 </div>

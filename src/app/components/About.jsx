@@ -65,7 +65,7 @@ const About = () => {
 
             {/* Content */}
             <div className='w-full lg:w-1/2 about-text space-y-6 px-4 sm:px-0'>
-                <h3 className='text-xl sm:text-2xl font-semibold text-blue-400'>Who am I?</h3>
+                <p className='text-xl sm:text-2xl font-semibold text-blue-400'>Who am I?</p>
                 <h2 className='text-3xl sm:text-4xl font-bold leading-tight'>I'm Jenkins Uwagbai, a <span className="text-white">Frontend Architect</span>.</h2>
                 <p className='text-zinc-400 text-base sm:text-lg leading-relaxed'>
                     I specialize in building and managing high-performance websites and web applications. My passion lies in creating seamless, user-friendly experiences that drive product success. 

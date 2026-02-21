@@ -26,7 +26,6 @@ const Page = () => {
         <div id="contact" className="section">
           <ContactForm />
         </div>
-      
       <Footer />
     </div>
   );
