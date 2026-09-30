@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper font-display text-ink antialiased;
+}
+
+::selection {
+  background: #ffd23f;
+  color: #0f1b2d;
+}
+
+:focus-visible {
+  outline: 3px solid #2a44f5;
+  outline-offset: 3px;
+}
+.on-dark :focus-visible {
+  outline-color: #ffd23f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
