@@ -9,14 +9,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
-import { profile, experience } from "@/lib/data";
-
-const nav = [
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-];
+import { profile, experience, navLinks } from "@/lib/data";
 
 /** Each letter bounces in, then jumps away from your cursor. */
 function BouncyWord({ text, base }: { text: string; base: number }) {
@@ -149,8 +142,8 @@ export default function Hero() {
           <a href="#top" className="text-base font-bold">
             {profile.name}
           </a>
-          <ul className="flex flex-wrap gap-x-2 gap-y-2">
-            {nav.map((n) => (
+          <ul className="hidden md:flex flex-wrap gap-x-2 gap-y-2">
+            {navLinks.map((n) => (
               <li key={n.href}>
                 <motion.a
                   href={n.href}
