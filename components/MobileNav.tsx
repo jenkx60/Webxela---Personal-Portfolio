@@ -179,7 +179,7 @@ const MobileNav = () => {
                                 whileTap={{ scale: 0.94 }}
                                 whileHover={{ scale: 1.04, rotate: -2 }}
                                 transition={spring}
-                                className='block rounded-full border-2 border-ink bg-ink px-6 py-3 text-center font-bold text-papre shadow-pop'
+                                className={`block rounded-full border-2 border-ink px-6 py-3 text-center font-bold text-papre shadow-pop ${tones[0]}`}
                             >
                                 Download CV
                             </motion.a>

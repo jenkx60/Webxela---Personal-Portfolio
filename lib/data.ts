@@ -3,7 +3,7 @@ export const profile = {
   role: "Software Developer",
   email: "jenkinsu@hotmail.com",
   location: "Lagos, Nigeria (UTC+1)",
-  cv: "/Jenkins_Uwagbai_CV.pdf",
+  cv: "https://drive.google.com/file/d/1C8ord2uTQSnDk4Lir2xCr7z30nUIHtz8/view?usp=drive_link",
   socials: [
     { label: "GitHub", href: "https://github.com/jenkx60" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/jenkins-uwagbai/" },
