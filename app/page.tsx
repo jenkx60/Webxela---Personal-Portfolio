@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import ScrollProgress from "@/components/ScrollProgress";
+import MobileNav from "@/components/MobileNav";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -30,6 +31,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ScrollProgress />
+      <MobileNav />
       <Hero />
       <Marquee />
       <Experience />

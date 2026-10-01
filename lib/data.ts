@@ -13,6 +13,13 @@ export const profile = {
   ],
 };
 
+export const navLinks = [
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+]
+
 export type Role = {
   company: string;
   title: string;
@@ -23,19 +30,6 @@ export type Role = {
 };
 
 export const experience: Role[] = [
-  {
-    company: "Reboot Codes",
-    title: "Software Developer",
-    period: "Mar 2026 to now",
-    mode: "Remote, contract",
-    current: true,
-    points: [
-      "Built a Discord-based job-application platform (Next.js, Node.js, PostgreSQL/Supabase) that replaced manual candidate screening and sends every applicant live status updates. Recruiter admin time is down an estimated 35 to 50%.",
-      "Built a WordPress page-discovery and site-scanning tool (Go, React, Tailwind, Wails). A scan now takes about 10 minutes instead of a manual multi-step process.",
-      "Set up automated unit, integration and system tests, cutting manual QA effort by an estimated 25%.",
-      "Wrote internal documentation that shortens onboarding for new engineers and cuts repeat support questions.",
-    ],
-  },
   {
     company: "Qred Technologies",
     title: "Frontend Developer",
@@ -48,6 +42,19 @@ export const experience: Role[] = [
       "Improved page speed and Core Web Vitals by an estimated 35% with React, Vite and Tailwind CSS.",
       "Hardened security through secure configuration, API protection and access control.",
       "Automated manual business operations with Zoho and Supabase workflows.",
+    ],
+  },
+  {
+    company: "Reboot Codes",
+    title: "Software Developer",
+    period: "Mar 2026 to Oct 2026",
+    mode: "Remote, contract",
+    current: false,
+    points: [
+      "Built a Discord-based job-application platform (Next.js, Node.js, PostgreSQL/Supabase) that replaced manual candidate screening and sends every applicant live status updates. Recruiter admin time is down an estimated 35 to 50%.",
+      "Built a WordPress page-discovery and site-scanning tool (Go, React, Tailwind, Wails). A scan now takes about 10 minutes instead of a manual multi-step process.",
+      "Set up automated unit, integration and system tests, cutting manual QA effort by an estimated 25%.",
+      "Wrote internal documentation that shortens onboarding for new engineers and cuts repeat support questions.",
     ],
   },
   {

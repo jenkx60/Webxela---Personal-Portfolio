@@ -11,7 +11,7 @@ export default function Projects() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="projects" className="border-y-2 border-ink bg-white">
+    <section id="projects" className="overflow-x-clip border-y-2 border-ink bg-white">
       <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
         <h2 className="text-5xl font-extrabold tracking-tight md:text-6xl">Projects</h2>
         <Squiggle className="mt-3 h-4 w-48" color="#2A44F5" />
