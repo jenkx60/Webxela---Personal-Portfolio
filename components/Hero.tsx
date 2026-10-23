@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import { profile, experience, navLinks } from "@/lib/data";
+import Image from "next/image";
 
 /** Each letter bounces in, then jumps away from your cursor. */
 function BouncyWord({ text, base }: { text: string; base: number }) {
@@ -139,8 +140,23 @@ export default function Hero() {
           aria-label="Main"
           className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-6 text-sm font-semibold"
         >
-          <a href="#top" className="text-base font-bold">
+          {/* <a href="#top" className="text-base font-bold">
             {profile.name}
+          </a> */}
+          {/* Brand Logo */}
+          <a
+            href="#top"
+            aria-label="Jenkins Uwagbai - Back to top"
+            className="inline-flex items-center"
+          >
+            <Image
+              src="/images/J-U-logo.png"
+              alt="Jenkins Uwagbai Logo"
+              width={64}
+              height={64}
+              priority
+              className="h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            />
           </a>
           <ul className="hidden md:flex flex-wrap gap-x-2 gap-y-2">
             {navLinks.map((n) => (
